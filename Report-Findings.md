@@ -50,7 +50,33 @@ The investigation utilized Microsoft Defender for Endpoint data (`DeviceProcessE
 
 ---
 
-## 3. Analysis
+## 3. MITRE ATT&CK Mapping (Summary)
+
+| Phase | Technique | ID |
+|-------|-----------|----|
+| Initial Access | Valid Accounts | **T1078** |
+| Execution | Command & Scripting Interpreter | **T1059** |
+| Execution | Windows Utility Execution (certutil, schtasks, curl) | **T1218** |
+| Persistence | Scheduled Task/Job | **T1053.005** |
+| Persistence | Account Creation | **T1136** |
+| Defense Evasion | Hidden Files & Directories | **T1564.001** |
+| Defense Evasion | Modify Windows Defender Exclusions | **T1562.001** |
+| Defense Evasion | Clear Windows Logs | **T1070.001** |
+| Credential Access | OS Credential Dumping (mimikatz/mm.exe) | **T1003.001** |
+| Credential Access | Credential Storage Manipulation (cmdkey) | **T1555** |
+| Discovery | System & Network Discovery | **T1016**, **T1049** |
+| Lateral Movement | Remote Services (RDP/mstsc) | **T1021.001** |
+| Lateral Movement | Pass-the-Password / Stored Credentials | **T1550.002** |
+| Collection | Archive Collected Data (export-data.zip) | **T1560** |
+| Exfiltration | Exfiltration Over Web Services (Discord) | **T1567.002** |
+| Command & Control | External C2 communication | **T1105**, **T1071.001** |
+
+---
+
+
+
+
+## 4. Analysis
 
 1. **Initial Access:** Likely via compromised credentials on `azuki-logks` from a remote host (`88.97.178.12`).  
 2. **Execution & Reconnaissance:** Standard Windows tools (`ARP.EXE`, `netstat`, `ipconfig`) were executed to enumerate network and system information.  
@@ -67,7 +93,7 @@ The investigation utilized Microsoft Defender for Endpoint data (`DeviceProcessE
 
 ---
 
-## 4. Recommendations
+## 5. Recommendations
 
 **Immediate Response:**  
 - Disable `kenji.sato` account and any unauthorized accounts (`support`).  
